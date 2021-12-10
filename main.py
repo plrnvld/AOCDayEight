@@ -14,11 +14,11 @@ def are_equal_as_set(part1, part2):
     return set(part1) == set(part2)
 
 def count_sub_super(pattern, allPatterns):
-    superCount = len(list(filter(lambda item: is_strict_superset(pattern, item), allPatterns)))
     subCount = len(list(filter(lambda item: is_strict_subset(pattern, item), allPatterns)))
+    superCount = len(list(filter(lambda item: is_strict_superset(pattern, item), allPatterns)))
     return (subCount, superCount)
 
-def translate_super_and_sub_count(superSubCount):
+def translate_sub_and_super_count(subSuperCount):
   options = {
     (0,9) : 8,
     (1, 5) : 9,
@@ -30,7 +30,7 @@ def translate_super_and_sub_count(superSubCount):
     (2, 1) : 4,
     (4, 1) : 7,
     (6, 0) : 1 }
-  return options[superSubCount]
+  return options[subSuperCount]
 
 def solve_with_super_sub(io):
   inputParts = io[0].split(" ")
@@ -40,7 +40,7 @@ def solve_with_super_sub(io):
   
   for input in inputParts:
     countTup = count_sub_super(input, inputParts)
-    patternMapping.append((set(input), translate_super_and_sub_count(countTup)))
+    patternMapping.append((set(input), translate_sub_and_super_count(countTup)))
   
   def output_to_digit(output):
     for mapping in patternMapping:
