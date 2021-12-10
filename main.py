@@ -133,7 +133,9 @@ inAndOutPuts = list(map(lambda t: t.split(" | "), lines))
 # for inAndOutput in inAndOutPuts:
 #  print(f'{inAndOutput[0]} ==> {inAndOutput[1]}')
 
-solve_with_super_sub(inAndOutPuts[0])
+for inAndOutput in inAndOutPuts:
+  solve_with_super_sub(inAndOutput)
+  print()
 
 # for io in inAndOutPuts:
 #     solve_io(io)
